@@ -1,428 +1,145 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>李嘉泽 - 显卡控制中心</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-:root {
-    --intel-blue: #0071c5;
-    --intel-light: #f2f8ff;
-    --intel-dark: #005ea6;
-    --white: #ffffff;
-    --black: #222222;
-    --gray: #666666;
-    --light-gray: #f6f6f6;
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
-    --radius: 12px;
-    --radius-small: 6px;
-    --padding: 20px;
-    --padding-large: 40px;
-    --max-width: 1200px;
-    --transition: all 0.3s ease;
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
-}
-body {
-    background-color: var(--intel-light);
-    color: var(--black);
-    line-height: 1.8;
-    overflow-x: hidden;
-}
-.container {
-    width: 100%;
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 20px;
-}
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: var(--transition);
-}
-ul {
-    list-style: none;
-}
-img {
-    max-width: 100%;
-    display: block;
-}
-button {
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-/* 顶部滚动条 */
-.top-banner {
-    background-color: var(--intel-blue);
-    color: var(--white);
-    padding: 8px 0;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* 导航 */
-header {
-    background-color: var(--white);
-    box-shadow: var(--shadow);
-    position: sticky;
-    top: 0;
-    z-index: 999;
-}
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-}
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--intel-blue);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.logo i {
-    font-size: 26px;
-}
-.menu {
-    display: flex;
-    gap: 30px;
-}
-.menu a {
-    font-size: 15px;
-    font-weight: 500;
-    color: #444;
-    position: relative;
-}
-.menu a:hover {
-    color: var(--intel-blue);
-}
-
-/* 英雄区 */
-.hero {
-    padding: 100px 0;
-    text-align: center;
-    background-color: var(--white);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    margin: 30px 0;
-}
-.hero h1 {
-    font-size: 40px;
-    color: var(--intel-blue);
-    margin-bottom: 20px;
-}
-.hero p {
-    font-size: 18px;
-    max-width: 700px;
-    margin: 0 auto 30px;
-    color: #555;
-}
-.btn {
-    display: inline-block;
-    padding: 14px 32px;
-    background-color: var(--intel-blue);
-    color: var(--white);
-    border-radius: var(--radius-small);
-    font-weight: bold;
-    font-size: 15px;
-}
-.btn:hover {
-    background-color: var(--intel-dark);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
-}
-
-/* 卡片 */
-.card {
-    background-color: var(--white);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: var(--padding-large);
-    margin-bottom: 30px;
-    transition: var(--transition);
-}
-.card:hover {
-    box-shadow: var(--shadow-hover);
-}
-.card h2 {
-    font-size: 28px;
-    color: var(--intel-blue);
-    margin-bottom: 24px;
-    position: relative;
-    padding-bottom: 12px;
-}
-.card h2::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 60px;
-    height: 3px;
-    background-color: var(--intel-blue);
-    border-radius: 3px;
-}
-.card p {
-    font-size: 16px;
-    margin-bottom: 16px;
-    color: #333;
-}
-
-/* 创始人 */
-.founder-section {
-    padding: 20px 0;
-}
-.founder {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.founder-img {
-    flex: 1;
-    min-width: 280px;
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-}
-.founder-img img {
-    width: 100%;
-    height: auto;
-}
-.founder-text {
-    flex: 2;
-    min-width: 300px;
-}
-.founder-text h3 {
-    font-size: 30px;
-    color: var(--intel-blue);
-    margin-bottom: 12px;
-}
-.founder-tag {
-    font-size: 17px;
-    color: #666;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 500;
-}
-.founder-text p {
-    font-size: 16px;
-    line-height: 1.9;
-    margin-bottom: 18px;
-}
-
-/* 底部 */
-footer {
-    background-color: var(--intel-blue);
-    color: var(--white);
-    padding: 50px 20px;
-    text-align: center;
-    margin-top: 60px;
-}
-footer p {
-    font-size: 15px;
-    opacity: 0.9;
-}
-
-/* 搞笑专属样式 */
-.funny-box{background:#fff;padding:20px;margin:15px 0;border-radius:10px;border-left:5px solid #0071c5}
-.funny-title{font-size:20px;color:#0071c5;margin-bottom:10px}
-.funny-text{font-size:15px;color:#333;line-height:1.8}
-.funny-list li{padding:6px 0;font-size:15px}
-.funny-icon{color:#0071c5;margin-right:8px}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电脑基础操作使用说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            padding: 30px;
+            line-height: 1.8;
+            color: #222;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px #ddd;
+        }
+        h1 {
+            text-align: center;
+            color: #2b5cb8;
+            margin-bottom: 30px;
+            font-size: 26px;
+        }
+        h2 {
+            font-size: 20px;
+            margin: 25px 0 12px;
+            color: #1f4080;
+            border-left: 4px solid #2b5cb8;
+            padding-left: 10px;
+        }
+        .warn-title {
+            color: #e03939;
+            font-weight: bold;
+        }
+        p, li {
+            font-size: 16px;
+            margin: 8px 0;
+        }
+        ul {
+            padding-left: 24px;
+            margin: 10px 0;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>电脑基础操作使用说明</h1>
 
-<div class="top-banner">
-<i class="fab fa-intel"></i> 英特尔显卡控制中心（搞笑版）
-</div>
+        <h2>一、开机关机基础</h2>
+        <ul>
+            <li>开机：找到主机电源键按一下，再点开屏幕电源，等待桌面出现即可。</li>
+            <li>关机：不要直接拔电源，点桌面左下角开始菜单，点击电源图标，选择关机，黑屏后再断电。</li>
+        </ul>
 
-<header>
-<div class="container">
-<div class="nav">
-<a href="#" class="logo">
-<i class="fab fa-intel"></i>
-李嘉泽的主页
-</a>
-<ul class="menu">
-<li><a href="#home">首页</a></li>
-<li><a href="#about">关于我</a></li>
-<li><a href="#skill">我的技能</a></li>
-<li><a href="#me">个人介绍</a></li>
-</ul>
-</div>
-</div>
-</header>
+        <h2>二、鼠标使用</h2>
+        <p>左键单击：选中文件/按钮</p>
+        <p>左键双击：打开软件、文件夹</p>
+        <p>右键：弹出菜单，复制、删除、重命名都在这里</p>
+        <p>滚轮：上下滑动页面查看内容</p>
 
-<section class="hero" id="home">
-<div class="container">
-<h1>欢迎来到ljz的主页</h1>
-<p>一名热爱代码、喜欢英特尔、阳光开朗的初中生，正在用HTML搭建属于自己的小世界～</p>
-<a href="#me" class="btn">了解我的介绍</a>
-</div>
-</section>
+        <h3>鼠标右键完整功能详解</h3>
+        <p>1. 在桌面空白处右键（无选中任何文件）</p>
+        <ul>
+            <li>刷新：页面卡顿、图标不显示时刷新界面</li>
+            <li>新建：创建文件夹、文本文档、表格等文件</li>
+            <li>查看：调整图标大小、自动排列图标</li>
+            <li>个性化：更换电脑壁纸、屏幕颜色</li>
+        </ul>
+        <p>2. 右键点击文件 / 文件夹（最常用）</p>
+        <ul>
+            <li>打开：直接进入文件夹 / 打开文档</li>
+            <li>剪切：移动文件，粘贴后原位置文件消失</li>
+            <li>复制：复制文件，粘贴后保留原文件</li>
+            <li>粘贴：剪切 / 复制后，在此处生成文件</li>
+            <li>删除：文件移入回收站</li>
+            <li>重命名：修改文件名字</li>
+            <li>创建快捷方式：桌面生成快速打开图标</li>
+            <li>发送到：把文件发送到桌面、U 盘</li>
+            <li>属性：查看文件大小、存放位置</li>
+            <li>添加到压缩包：打包文件方便传输</li>
+        </ul>
 
-<section class="container">
-<div class="card" id="about">
-<h2>关于我</h2>
-<p>我是一名普通又自信的初中生。平时上课认真学习，下课快乐玩耍，喜欢研究电脑、写网页、玩科技。</p>
-<p>我特别喜欢英特尔的蓝色风格，觉得科技感十足，所以把我的网页也做成了英特尔主题～</p>
-<p>虽然我现在还在上学，但我已经能用HTML和CSS做出完整的网页了，我会继续努力学习，变得更厉害！</p>
-</div>
+        <h2>三、桌面基础认知</h2>
+        <ul>
+            <li>图标：带有文字的小图片，双击打开对应软件（微信、浏览器、文档等）</li>
+            <li>任务栏：屏幕最下方长条，打开的软件都会显示在这里，点击切换窗口</li>
+            <li>回收站：无用文件拖入此处，右键可永久删除文件</li>
+            <li>滚轮上下滑动翻阅页面</li>
+        </ul>
 
-<div class="card" id="skill">
-<h2>我的小技能</h2>
-<p>✅ 会写 HTML 结构，搭建网页骨架</p>
-<p>✅ 会用 CSS 美化页面，调整颜色、排版、样式</p>
-<p>✅ 热爱学习，心态超好，bug再多也不慌</p>
-<p>✅ 喜欢研究电脑、科技、英特尔相关知识</p>
-<p>✅ 性格开朗，认真努力，积极向上</p>
-</div>
+        <h2>四、打字、输入文字</h2>
+        <ul>
+            <li>1.打开记事本/Word，点击空白处出现闪烁光标，就能打字。</li>
+            <li>2.快捷键：</li>
+        </ul>
+        <ul>
+            <li>Shift：切换中英文输入</li>
+            <li>Ctrl+Shift：切换不同输入法</li>
+            <li>Enter（回车）：换行、确认操作</li>
+            <li>Backspace（退格键）：删除光标前面的文字</li>
+            <li>空格：打出空白间隔</li>
+        </ul>
 
-<div class="card founder-section" id="me">
-<h2>个人介绍</h2>
-<div class="founder">
-<div class="founder-img">
-<img src="https://picsum.photos/600/600" alt="李嘉泽">
-</div>
-<div class="founder-text">
-<h3>李嘉泽</h3>
-<div class="founder-tag">
-<i class="fas fa-user-tie"></i>
-初中生 · 技术小达人 · 干饭积极分子
-</div>
+        <h2>五、浏览器上网操作</h2>
+        <ul>
+            <li>1.双击桌面浏览器图标打开软件。</li>
+            <li>2.页面顶部长条搜索框输入文字，按回车即可搜索内容。</li>
+            <li>3.操作按钮：</li>
+            <li>窗口右上角×：关闭当前页面</li>
+            <li>左上角向左箭头：返回上一页</li>
+        </ul>
 
-<p>一名普通又自信的初中生，平时最爱上课认真听讲，下课快乐玩耍，偶尔偷偷研究写网页、玩电脑。</p>
-<p>没啥厉害头衔，就是代码写得比作业快，bug比笔记多，但心态超好，越写越开心！</p>
-<p>我特别喜欢英特尔的科技感，虽然我还在上学，但也想做一个懂电脑、爱代码的帅气初中生。</p>
-<p>我的梦想：好好学习，天天向上，技术越来越强，做一个会写网页的快乐初中生～</p>
-</div>
-</div>
-</div>
+        <h2 class="warn-title">重要！！！！六、使用小提醒</h2>
+        <ul>
+            <li>1.电脑卡顿不要连续点击鼠标，等待几秒响应。</li>
+            <li>2.陌生弹窗不要随意点击确定，直接点关闭按钮。</li>
+        </ul>
 
-<!-- ===================== 以下开始疯狂增加搞笑内容 ===================== -->
+        <p>还有什么尽管对我说</p>
+        <p>或发送电子邮件到：ljz556644115522@outlook.com</p>
 
-<div class="funny-box">
-<div class="funny-title">😂 李嘉泽的搞笑日常</div>
-<div class="funny-list">
-<li><i class="fa-solid fa-face-laugh-squint funny-icon"></i> 上课假装认真听讲，其实脑子里在想中午吃啥</li>
-<li><i class="fa-solid fa-face-laugh-squint funny-icon"></i> 写代码十分钟，找bug半小时，还越改越开心</li>
-<li><i class="fa-solid fa-face-laugh-squint funny-icon"></i> 电脑一卡就怪英特尔，英特尔一好就夸英特尔</li>
-<li><i class="fa-solid fa-face-laugh-squint funny-icon"></i> 作业写不完没关系，代码必须先写完</li>
-</div>
-</div>
-
-<div class="funny-box">
-<div class="funny-title">😎 我的搞笑座右铭</div>
-<div class="funny-text">只要代码写得快，作业就追不上我！</div>
-<div class="funny-text">只要bug改得稳，老师就看不出我在摸鱼！</div>
-<div class="funny-text">英特尔蓝色一上身，全班最靓初中生！</div>
-</div>
-
-<div class="funny-box">
-<div class="funny-title">🍚 干饭人专属宣言</div>
-<div class="funny-list">
-<li><i class="fa-solid fa-bowl-rice funny-icon"></i> 干饭不积极，思想有问题</li>
-<li><i class="fa-solid fa-bowl-rice funny-icon"></i> 代码可以断，干饭不能慢</li>
-<li><i class="fa-solid fa-bowl-rice funny-icon"></i> 午饭吃得饱，下午没烦恼</li>
-<li><i class="fa-solid fa-bowl-rice funny-icon"></i> 晚饭吃得好，代码没烦恼</li>
-</div>
-</div>
-
-<div class="funny-box">
-<div class="funny-title">💻 初中生代码怪谈</div>
-<div class="funny-text">别人的笔记：知识点满满</div>
-<div class="funny-text">我的笔记：bug大全合集</div>
-<div class="funny-text">别人的桌面：干净整洁</div>
-<div class="funny-text">我的桌面：全是网页文件</div>
-</div>
-
-<div class="funny-box">
-<div class="funny-title">😜 我的搞笑小目标</div>
-<div class="funny-list">
-<li><i class="fa-solid fa-check funny-icon"></i> 学会写更炫酷的网页</li>
-<li><i class="fa-solid fa-check funny-icon"></i> 让全班同学都来参观我的主页</li>
-<li><i class="fa-solid fa-check funny-icon"></i> 代码越写越溜，bug越来越少</li>
-<li><i class="fa-solid fa-check funny-icon"></i> 干饭速度保持第一</li>
-<li><i class="fa-solid fa-check funny-icon"></i> 做一个会写代码的初中生</li>
-</div>
-</div>
-
-<!-- 下面自动填充到5000行，全是搞笑内容，不破坏页面 -->
-<div class="funny-box"><div class="funny-title">🤣 搞笑小剧场1</div><div class="funny-text">老师：作业写完了吗？我：写完了！其实我在写网页。</div></div>
-<div class="funny-box"><div class="funny-title">🤣 搞笑小剧场2</div><div class="funny-text">同学：你在干嘛？我：搞科研！其实在调CSS颜色。</div></div>
-<div class="funny-box"><div class="funny-title">🤣 搞笑小剧场3</div><div class="funny-text">妈妈：别玩电脑了！我：我在学习！真的！</div></div>
-<div class="funny-box"><div class="funny-title">🤣 搞笑小剧场4</div><div class="funny-text">电脑：我累了。我：坚持住，这行代码马上好！</div></div>
-<div class="funny-box"><div class="funny-title">🤣 搞笑小剧场5</div><div class="funny-text">bug：我又来了。我：你走开，我不想见你！</div></div>
-<div class="funny-box"><div class="funny-title">🤣 搞笑小剧场6</div><div class="funny-text">网页终于好看了！我：我真是天才！</div></div>
-<div class="funny-box"><div class="funny-title">🤣 搞笑小剧场8</div><div class="funny-text">英特尔：我很强。我：我知道，所以我用你做主题！</div></div>
-<div class="funny-box"><div class="funny-title">🤣 搞笑小剧场9</div><div class="funny-text">上课：好困。下课：精神百倍写代码！</div></div>
-<div class="funny-box"><div class="funny-title">🤣 搞笑小剧场10</div><div class="funny-text">梦想：成为代码大神！现实：还在和bug打架！</div></div>
-
-<div class="funny-box"><div class="funny-title">😂 搞笑日常11</div><div class="funny-text">写代码时：我是大神！写完后：我真厉害！</div></div>
-<div class="funny-box"><div class="funny-title">😂 搞笑日常12</div><div class="funny-text">别人追剧我追代码，别人聊天我调样式！</div></div>
-<div class="funny-box"><div class="funny-title">😂 搞笑日常13</div><div class="funny-text">代码使我快乐，bug使我成长！</div></div>
-<div class="funny-box"><div class="funny-title">😂 搞笑日常14</div><div class="funny-text">电脑不卡我开心，电脑一卡我叹气！</div></div>
-<div class="funny-box"><div class="funny-title">😂 搞笑日常15</div><div class="funny-text">初中生的快乐很简单：代码运行成功！</div></div>
-
-<div class="funny-box"><div class="funny-title">😜 搞笑语录16</div><div class="funny-text">只要我不放弃，bug就会被我打败！</div></div>
-<div class="funny-box"><div class="funny-title">😜 搞笑语录17</div><div class="funny-text">写网页是爱好，变厉害是目标！</div></div>
-<div class="funny-box"><div class="funny-title">😜 搞笑语录18</div><div class="funny-text">好好学习，天天写码，快乐加倍！</div></div>
-<div class="funny-box"><div class="funny-title">😜 搞笑语录19</div><div class="funny-text">英特尔风，搞笑魂，我就是最靓初中生！</div></div>
-<div class="funny-box"><div class="funny-title">😜 搞笑语录20</div><div class="funny-text">不慌不忙，慢慢变强，未来可期！</div></div>
-
-<!-- 我在这里继续疯狂加，一直加到接近5000行，全是搞笑内容，不影响显示 -->
-<div class="funny-box"><div class="funny-title">😂 搞笑小内容21</div><div class="funny-text">我写的不是代码，是快乐！</div></div>
-<div class="funny-box"><div class="funny-title">😂 搞笑小内容22</div><div class="funny-text">我调的不是样式，是帅气！</div></div>
-<div class="funny-box"><div class="funny-title">😂 搞笑小内容23</div><div class="funny-text">我做的不是网页，是梦想！</div></div>
-<div class="funny-box"><div class="funny-title">😂 搞笑小内容24</div><div class="funny-text">我用的不是英特尔，是信仰！</div></div>
-<div class="funny-box"><div class="funny-title">😂 搞笑小内容25</div><div class="funny-text">初中生也能很厉害，不信你看我主页！</div></div>
-<div class="funny-box"><div class="funny-title">😂 搞笑小内容26</div><div class="funny-text">代码千千万，我只爱写HTML！</div></div>
-<div class="funny-box"><div class="funny-title">😂 搞笑小内容27</div><div class="funny-text">样式万万千，我只爱英特尔蓝！</div></div>
-<div class="funny-box"><div class="funny-title">😂 搞笑小内容28</div><div class="funny-text">主页好不好看，你们说了算！</div></div>
-<div class="funny-box"><div class="funny-title">😂 搞笑小内容29</div><div class="funny-text">我不管，我最帅，代码写得比谁快！</div></div>
-<div class="funny-box"><div class="funny-title">😂 搞笑小内容30</div><div class="funny-text">快乐初中生，在线写代码！</div></div>
-
-<!-- 继续疯狂加行，保证总数到5000行 -->
-<div class="funny-box"><div class="funny-title">🤣 搞笑31</div><div class="funny-text">上课认真，下课疯狂，代码写得响当当！</div></div>
-<div class="funny-box"><div class="funny-title">🤣 搞笑32</div><div class="funny-text">别人卷成绩，我卷代码，卷出一片天！</div></div>
-<div class="funny-box"><div class="funny-title">🤣 搞笑33</div><div class="funny-text">代码一行行，快乐一点点！</div></div>
-<div class="funny-box"><div class="funny-title">🤣 搞笑34</div><div class="funny-text">bug一个个，耐心一丢丢！</div></div>
-<div class="funny-box"><div class="funny-title">🤣 搞笑35</div><div class="funny-text">主页一点点变好看，我一点点变厉害！</div></div>
-<div class="funny-box"><div class="funny-title">🤣 搞笑36</div><div class="funny-text">初中生的代码之路，冲就完事了！</div></div>
-<div class="funny-box"><div class="funny-title">🤣 搞笑37</div><div class="funny-text">不抱怨，不放弃，一直努力！</div></div>
-<div class="funny-box"><div class="funny-title">🤣 搞笑38</div><div class="funny-text">写代码使我忘记烦恼，忘记作业！</div></div>
-<div class="funny-box"><div class="funny-title">🤣 搞笑39</div><div class="funny-text">电脑在手，代码我有，天下我有！</div></div>
-<div class="funny-box"><div class="funny-title">🤣 搞笑40</div><div class="funny-text">英特尔加持，我无敌！</div></div>
-
-<!-- 后面还有几百行，全部自动填充，保证总行数≈5000 -->
-<div class="funny-box"><div class="funny-title">😆 搞笑41</div><div class="funny-text">我就是我，不一样的初中生！</div></div>
-<div class="funny-box"><div class="funny-title">😆 搞笑42</div><div class="funny-text">爱代码，爱英特尔，爱干饭！</div></div>
-<div class="funny-box"><div class="funny-title">😆 搞笑43</div><div class="funny-text">简单快乐，认真生活，努力写码！</div></div>
-<div class="funny-box"><div class="funny-title">😆 搞笑44</div><div class="funny-text">未来的代码大神，就是我李嘉泽！</div></div>
-<div class="funny-box"><div class="funny-title">😆 搞笑45</div><div class="funny-text">今天也要努力写代码，加油！</div></div>
-
-</section>
-
-<footer>
-<div class="container">
-<p>&copy; 2026 李嘉泽 版权所有</p>
-</div>
-</footer>
-
+        <div class="footer">
+            注：此网页教程由李嘉泽AI大模型生成
+        </div>
+    </div>
 </body>
 </html>
