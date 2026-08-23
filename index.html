@@ -11,55 +11,74 @@
     box-sizing: border-box;
 }
 body{
-    /* 动态渐变背景，不停流动变色，不再单纯蓝色 */
-    background: linear-gradient(-45deg,#0078d4,#2040aa,#7b2cb8,#1282a2);
+    background: linear-gradient(-45deg,#1a67ad,#345799,#5b5896,#277494);
     background-size: 400% 400%;
-    animation: bgMove 8s ease infinite;
+    animation: bgMove 12s ease infinite;
     color: #ffffff;
     font-family: "Segoe UI", sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 40px;
+    justify-content: flex-start;
+    padding: 80px 60px;
 }
 h1{
     font-size: 48px;
-    margin-bottom: 32px;
+    margin-bottom: 60px;
     opacity: 0;
-    animation: fadeIn 1s ease forwards, textBlink 2.5s infinite;
+    animation: fadeIn 1s ease forwards, titleSoftGlow 3.5s ease-in-out infinite;
 }
 p{
     font-size: 22px;
-    margin-bottom: 14px;
+    margin-bottom: 32px;
     max-width: 920px;
     opacity: 0;
     animation: fadeIn 1s ease forwards;
 }
-/* 个别段落彩色霓虹效果 */
 .colorText{
-    text-shadow: 0 0 8px #fffd66,0 0 14px #ff8822;
+    text-shadow: 0 0 4px #ffe994,0 0 7px #ffaa6680;
+}
+.img-box{
+    margin: 40px 0;
+    max-width: 480px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+.img-box img{
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.35);
+}
+.caption{
+    margin-top: 12px;
+    font-size: 15px;
+    color: #e0e9ff;
+    text-align: center;
 }
 .p1{animation-delay:1s;}
-.p2{animation-delay:2s;}
-.p3{animation-delay:3s;}
-.p4{animation-delay:4s;}
-.p5{animation-delay:5s;}
-.p6{animation-delay:6s;}
-.p7{animation-delay:7s;}
-.p8{animation-delay:8s;}
-.p9{animation-delay:9s;}
-.p10{animation-delay:10s;}
-.p11{animation-delay:11s;}
-.p12{animation-delay:12s;}
-.p13{animation-delay:13s;}
-.p14{animation-delay:14s;}
-.p15{animation-delay:15s;}
-.p16{animation-delay:16s;}
-.p17{animation-delay:17s;}
-.p18{animation-delay:18s;}
-.p19{animation-delay:19s;}
-.p20{animation-delay:20s;}
+.p2{animation-delay:2.5s;}
+.img1{animation-delay:3.5s;}
+.p3{animation-delay:5s;}
+.p4{animation-delay:6.5s;}
+.p5{animation-delay:8s;}
+.img2{animation-delay:9s;}
+.p6{animation-delay:10.5s;}
+.p7{animation-delay:12s;}
+.p8{animation-delay:13.5s;}
+.img3{animation-delay:14.5s;}
+.p9{animation-delay:16s;}
+.p10{animation-delay:17.5s;}
+.p11{animation-delay:19s;}
+.p12{animation-delay:20.5s;}
+.img4{animation-delay:21.5s;}
+.p13{animation-delay:23s;}
+.p14{animation-delay:24.5s;}
+.p15{animation-delay:26s;}
+.p16{animation-delay:27.5s;}
+.p17{animation-delay:29s;}
+.p18{animation-delay:30.5s;}
+.p19{animation-delay:32s;}
+.p20{animation-delay:33.5s;}
 
 @keyframes fadeIn {
     from {
@@ -71,33 +90,56 @@ p{
         transform: translateY(0);
     }
 }
-/* 背景渐变流动动画 */
 @keyframes bgMove {
     0%{background-position:0% 50%;}
     50%{background-position:100% 50%;}
     100%{background-position:0% 50%;}
 }
-/* 标题闪烁霓虹 */
-@keyframes textBlink {
-    0%,100%{text-shadow:0 0 10px #fff,0 0 20px #44ccff;}
-    50%{text-shadow:0 0 16px #ff77dd,0 0 30px #ff2288;}
+@keyframes titleSoftGlow {
+    0%,100%{text-shadow:0 0 6px #cce5ff77;}
+    50%{text-shadow:0 0 10px #e8c4e966;}
 }
 </style>
 </head>
 <body>
     <h1>:) 报告！CPU成功逃跑</h1>
+
     <p class="p1">我真没想到你老老实实搜这个网址过来了。</p>
     <p class="p2">刚刚蓝屏说CPU要炸，纯属口嗨。</p>
+
+    <div class="img-box img1">
+        <img src="https://picsum.photos/id/237/480/270" alt="CPU摸鱼">
+        <div class="caption">CPU：我先溜了，事情稍后处理</div>
+    </div>
+
     <p class="p3 colorText">你的CPU已经偷偷从机箱溜出去买烤肠了。</p>
     <p class="p4">散热器还在傻乎乎全力转，白忙活一场。</p>
     <p class="p5">显卡：就我还在工位摸鱼，CPU居然翘班。</p>
+
+    <div class="img-box img2">
+        <img src="https://picsum.photos/id/416/480/270" alt="散热器白忙活">
+        <div class="caption">散热器：我以为我要拯救世界，结果只是陪跑</div>
+    </div>
+
     <p class="p6">内存刚刚笑到溢出，差点把自己搞蓝屏。</p>
     <p class="p7">硬盘偷偷记录下这一出大戏，存进你的C盘。</p>
     <p class="p8">那个一万的倒计时，是CPU排队买烤肠的倒计时。</p>
+
+    <div class="img-box img3">
+        <img src="https://picsum.photos/id/292/480/270" alt="烤肠倒计时">
+        <div class="caption">倒计时结束不是爆炸，是烤肠出炉</div>
+    </div>
+
     <p class="p9 colorText">所谓“加载病毒”，其实加载的是辣条大礼包。</p>
     <p class="p10">别到处跟别人说CPU会爆炸，会被硬件厂商笑话。</p>
     <p class="p11">刚刚你是不是手忙脚乱准备拔电源？</p>
     <p class="p12">大可不必，拔掉电源CPU就吃不上烤肠了。</p>
+
+    <div class="img-box img4">
+        <img src="https://picsum.photos/id/431/480/270" alt="任务管理器救场">
+        <div class="caption">任务管理器：别慌，我来收尾</div>
+    </div>
+
     <p class="p13">任务管理器才是正确召唤CPU回来的方法。</p>
     <p class="p14 colorText">友情提示：不要真的给CPU喂烤肠，会短路。</p>
     <p class="p15">主板现在很无奈，员工集体摆烂就它在岗。</p>
