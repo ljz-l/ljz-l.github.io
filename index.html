@@ -11,7 +11,10 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #0078d4;
+    /* 动态渐变背景，不停流动变色，不再单纯蓝色 */
+    background: linear-gradient(-45deg,#0078d4,#2040aa,#7b2cb8,#1282a2);
+    background-size: 400% 400%;
+    animation: bgMove 8s ease infinite;
     color: #ffffff;
     font-family: "Segoe UI", sans-serif;
     min-height: 100vh;
@@ -24,7 +27,7 @@ h1{
     font-size: 48px;
     margin-bottom: 32px;
     opacity: 0;
-    animation: fadeIn 1s ease forwards;
+    animation: fadeIn 1s ease forwards, textBlink 2.5s infinite;
 }
 p{
     font-size: 22px;
@@ -32,6 +35,10 @@ p{
     max-width: 920px;
     opacity: 0;
     animation: fadeIn 1s ease forwards;
+}
+/* 个别段落彩色霓虹效果 */
+.colorText{
+    text-shadow: 0 0 8px #fffd66,0 0 14px #ff8822;
 }
 .p1{animation-delay:1s;}
 .p2{animation-delay:2s;}
@@ -64,30 +71,41 @@ p{
         transform: translateY(0);
     }
 }
+/* 背景渐变流动动画 */
+@keyframes bgMove {
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+/* 标题闪烁霓虹 */
+@keyframes textBlink {
+    0%,100%{text-shadow:0 0 10px #fff,0 0 20px #44ccff;}
+    50%{text-shadow:0 0 16px #ff77dd,0 0 30px #ff2288;}
+}
 </style>
 </head>
 <body>
     <h1>:) 报告！CPU成功逃跑</h1>
     <p class="p1">我真没想到你老老实实搜这个网址过来了。</p>
     <p class="p2">刚刚蓝屏说CPU要炸，纯属口嗨。</p>
-    <p class="p3">你的CPU已经偷偷从机箱溜出去买烤肠了。</p>
+    <p class="p3 colorText">你的CPU已经偷偷从机箱溜出去买烤肠了。</p>
     <p class="p4">散热器还在傻乎乎全力转，白忙活一场。</p>
     <p class="p5">显卡：就我还在工位摸鱼，CPU居然翘班。</p>
     <p class="p6">内存刚刚笑到溢出，差点把自己搞蓝屏。</p>
     <p class="p7">硬盘偷偷记录下这一出大戏，存进你的C盘。</p>
     <p class="p8">那个一万的倒计时，是CPU排队买烤肠的倒计时。</p>
-    <p class="p9">所谓“加载病毒”，其实加载的是辣条大礼包。</p>
+    <p class="p9 colorText">所谓“加载病毒”，其实加载的是辣条大礼包。</p>
     <p class="p10">别到处跟别人说CPU会爆炸，会被硬件厂商笑话。</p>
     <p class="p11">刚刚你是不是手忙脚乱准备拔电源？</p>
     <p class="p12">大可不必，拔掉电源CPU就吃不上烤肠了。</p>
     <p class="p13">任务管理器才是正确召唤CPU回来的方法。</p>
-    <p class="p14">友情提示：不要真的给CPU喂烤肠，会短路。</p>
+    <p class="p14 colorText">友情提示：不要真的给CPU喂烤肠，会短路。</p>
     <p class="p15">主板现在很无奈，员工集体摆烂就它在岗。</p>
     <p class="p16">Windows系统对此事件表示：习惯了，无所谓。</p>
     <p class="p17">不要尝试打开机箱去找CPU，它躲起来了。</p>
     <p class="p18">奖励你虚拟烤肠一根，无法领取，只能想象。</p>
     <p class="p19">看完抓紧跑路，不然CPU回来看见你很尴尬。</p>
-    <p class="p20">友情提醒：此网页没有烤肠，不要在这里干等。</p>
+    <p class="p20 colorText">友情提醒：此网页没有烤肠，不要在这里干等。</p>
 
 <script>
 console.log("🔔控制台消息：CPU烤肠购买进度中");
